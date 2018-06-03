@@ -48,6 +48,7 @@ public class QRoomPage extends AppCompatActivity {
         String[] items = {"coordinate-Travis Scott", "Connect The Dots-Meek Mill", "Ran It Up-Rich " +
                 "the Kid"};
         arrayList = new ArrayList<>(Arrays.asList(items));
+
         adapter = new ArrayAdapter<String>(this, R.layout.song_layout, R.id.txtitem,arrayList);
         listView.setAdapter(adapter);
         SongInput = (EditText) findViewById(R.id.songinput);
