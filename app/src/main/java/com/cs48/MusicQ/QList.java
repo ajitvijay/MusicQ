@@ -13,6 +13,11 @@ public class QList implements Serializable{
     private List<Song> songs;
     private static final long serialVersionUID = 2L;
 
+    public QList(){
+        name = "";
+        songs = new ArrayList<>();
+    }
+
     public QList(String name, List<Song> songs) {
         this.name = name;
         this.songs = songs;

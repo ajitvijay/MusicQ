@@ -18,6 +18,16 @@ public class Song implements Serializable, Comparable<Song> {
 
     //Make call for image when needing it in the actual Activity
 
+    public Song(){
+        title = "";
+        artist = "";
+        length = 0;
+        playing = false;
+        upvotes = 0;
+        downvotes = 0;
+        spotifyURI = "";
+    }
+
     public Song(String title, String artist, int length, boolean playing, int upvotes, int downvotes, String spotifyURI) {
         this.title = title;
         this.artist = artist;

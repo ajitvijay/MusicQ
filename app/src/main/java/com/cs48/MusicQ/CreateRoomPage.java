@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CreateRoomPage extends AppCompatActivity implements View.OnClickListener {
 
     Button btn1;
@@ -27,9 +30,12 @@ public class CreateRoomPage extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(this, QRoomPage.class);
-        QRoom qroom = new QRoom();
+        List<Integer> members = new ArrayList<>();
+        members.add(CurrentUser.id);
+        QRoom qroom = new QRoom(members, Name.getText().toString(), Integer.parseInt(Code.getText().toString()), false, new Song(), new QList(), CurrentUser.id);
         qroom.setName(Name.getText().toString());
         qroom.setCode(Integer.parseInt(Code.getText().toString()));
+
 //        qroom.setExistingPlaylistURI(URI.getText().toString());
 
         intent.putExtra("qroom", qroom);
