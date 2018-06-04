@@ -43,7 +43,10 @@ public class QRoomPage extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //TODO: Check if current user is Leader, and change layout based on that
         setContentView(R.layout.combined_qroom_layout);
+//        setContentView(R.layout.activity_qroom_page);
 
         ListView listView = (ListView) findViewById(R.id.songlist);
 //        String[] items = {"coordinate-Travis Scott", "Connect The Dots-Meek Mill", "Ran It Up-Rich " +
