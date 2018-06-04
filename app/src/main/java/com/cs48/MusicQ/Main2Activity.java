@@ -1,4 +1,4 @@
-package com.cs48.spotifyapitest;
+package com.cs48.MusicQ;
 
 import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
