@@ -9,7 +9,7 @@ import java.util.List;
 
 public class QList implements Serializable{
     private String name;
-    private List<Song> songs;
+    private ArrayList<Song> songs;
     private static final long serialVersionUID = 2L;
 
     public QList(String name, List<Song> songs) {
