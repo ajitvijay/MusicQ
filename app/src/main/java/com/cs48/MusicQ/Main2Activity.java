@@ -85,9 +85,12 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
 
         if (view == buttonRegister) {
-            registerUser();
+            Toast.makeText(Main2Activity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(Main2Activity.this, MainActivity.class));
+            //registerUser();
         }
         if (view == textViewSignin) {
+            startActivity(new Intent(Main2Activity.this, SignIn.class));
             //login activity
         }
     }

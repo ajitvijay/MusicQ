@@ -111,10 +111,15 @@ public class QRoomPage extends AppCompatActivity {
             return currQRoom.getPlaylist().getSongs();
         }
     }
+    
+
+    }
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        
         currQRoom = (QRoom) getIntent().getSerializableExtra("qroom");
         //TODO: Check if current user is Leader, and change layout based on that
         //ONLY IF LEADER
