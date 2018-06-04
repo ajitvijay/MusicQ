@@ -1,18 +1,13 @@
 package com.cs48.MusicQ;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextClock;
 import android.widget.TextView;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import android.util.Log;
 import android.widget.Button;
@@ -22,12 +17,10 @@ import com.spotify.android.appremote.api.Connector;
 import com.spotify.android.appremote.api.SpotifyAppRemote;
 
 import com.spotify.protocol.client.Subscription;
-import com.spotify.protocol.types.PlayerContext;
 import com.spotify.protocol.types.PlayerState;
 import com.spotify.protocol.types.Track;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -39,21 +32,25 @@ public class QRoomPage extends AppCompatActivity {
     private SpotifyAppRemote mSpotifyAppRemote;
     private SongListAdapter songListAdapter;
     private ImageView pausePlay, skip;
-    private TextView currentSong;
+    private TextView currentSongTextView;
 
-    private List<Song> songsList;
-    private EditText SongInput;
+//    private List<Song> songsList;
+    private EditText songInput;
     private QRoom currQRoom;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        currQRoom = (QRoom) getIntent().getSerializableExtra("currQRoom");
         //TODO: Check if current user is Leader, and change layout based on that
         //ONLY IF LEADER
             setContentView(R.layout.combined_qroom_layout);
             pausePlay = (ImageView) findViewById(R.id.pausePlayImage);
             skip = (ImageView) findViewById(R.id.skipImage);
-            currentSong.setText(currQRoom.getCurrentSong().getTitle());
+            currentSongTextView = (TextView) findViewById(R.id.currentSongName);
+            currentSongTextView.setText(currQRoom.getCurrentSong().getTitle());
+
+
 
 //        setContentView(R.layout.activity_qroom_page);
 
@@ -62,10 +59,10 @@ public class QRoomPage extends AppCompatActivity {
 //                "the Kid"};
 //        arrayList = new ArrayList<>(Arrays.asList(items));
 
-        songsList = getDummyData();
+        currQRoom.getPlaylist().setSongs(getDummyData());
 
 //        adapter = new ArrayAdapter<String>(this, R.layout.song_layout, R.id.txtitem,arrayList);
-        songListAdapter = new SongListAdapter(this, songsList);
+        songListAdapter = new SongListAdapter(this, currQRoom.getPlaylist().getSongs());
         listView.setAdapter(songListAdapter);
         runOnUiThread(new Runnable() {
             @Override
@@ -75,15 +72,15 @@ public class QRoomPage extends AppCompatActivity {
         });
 //        listView.notify();
 
-        SongInput = (EditText) findViewById(R.id.songinput);
+        songInput = (EditText) findViewById(R.id.songinput);
         Button btnAddSong = (Button) findViewById(R.id.btn_add_song);
 
         btnAddSong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String newItem = SongInput.getText().toString();
+                String newItem = songInput.getText().toString();
                 Song songTest = new Song("NewSong", "Unknown", 100, false, 0, 0, "aa");
-                songsList.add(songTest);
+                currQRoom.getPlaylist().getSongs().add(songTest);
                 songListAdapter.notifyDataSetChanged();
 //                if(newItem != null) {
 //                    arrayList.add(new String(newItem));

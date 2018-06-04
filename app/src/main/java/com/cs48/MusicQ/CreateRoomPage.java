@@ -30,7 +30,7 @@ public class CreateRoomPage extends AppCompatActivity implements View.OnClickLis
         QRoom qroom = new QRoom();
         qroom.setName(Name.getText().toString());
         qroom.setCode(Integer.parseInt(Code.getText().toString()));
-        qroom.setExistingPlaylistURI(URI.getText().toString());
+//        qroom.setExistingPlaylistURI(URI.getText().toString());
 
         intent.putExtra("qroom", qroom);
         startActivity(intent);

@@ -71,9 +71,11 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(Main2Activity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
                         } else {
                             Toast.makeText(Main2Activity.this, "Couldn't register", Toast.LENGTH_SHORT).show();
                         }
+
                     }
                 });
 

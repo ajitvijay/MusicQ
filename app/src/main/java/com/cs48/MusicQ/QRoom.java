@@ -15,7 +15,6 @@ public class QRoom implements Serializable {
     private String existingPlaylistURI;
     private boolean playing;
     private Song currentSong;
-    private List<Song> songsList;
     private QList playlist;
     private int QLeader;
     private static final long serialVersionUID = 1L;
@@ -26,7 +25,6 @@ public class QRoom implements Serializable {
         this.code = code;
         this.playing = playing;
         this.currentSong = currentSong;
-        this.songsList = new ArrayList<>();
         this.playlist = playlist;
         this.QLeader = QLeader;
     }

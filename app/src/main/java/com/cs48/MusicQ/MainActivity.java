@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View view) {
             if (view == mButton1) {
 
-                Intent inten1 = new Intent(MainActivity.this, CreateRoomPage.class);
-                startActivity(inten1);
+                Intent intent1 = new Intent(MainActivity.this, CreateRoomPage.class);
+                startActivity(intent1);
             }
             if (view == mButton2) {
                 Intent tip = new Intent(MainActivity.this, JoinRoomPage.class);

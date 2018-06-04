@@ -18,6 +18,7 @@ public class User {
     private boolean spotifyMember;
 
 
+    public User(){}
     public User (int id, String firstName, String lastName, String username, String password, List<QList> playlists, QRoom currentRoom, boolean inRoom, boolean spotifyMember) {
         this.id = id;
         this.firstName = firstName;
