@@ -70,6 +70,9 @@ public class QRoomPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String newItem = SongInput.getText().toString();
+                Song songTest = new Song("NewSong", "Unknown", 100, false, 0, 0, "aa");
+                songsList.add(songTest);
+                songListAdapter.notifyDataSetChanged();
 //                if(newItem != null) {
 //                    arrayList.add(new String(newItem));
 //                }
