@@ -23,7 +23,7 @@ public class CreateRoomPage extends AppCompatActivity implements View.OnClickLis
         btn1 = (Button) findViewById(R.id.btn_pass_obj);
         Name = (EditText) findViewById(R.id.et_name);
         Code = (EditText) findViewById(R.id.et_code);
-        URI  = (EditText) findViewById(R.id.et_existing_playlist);
+//        URI  = (EditText) findViewById(R.id.et_existing_playlist);
         btn1.setOnClickListener(this);
     }
 

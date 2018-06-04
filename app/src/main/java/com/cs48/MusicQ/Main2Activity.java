@@ -1,6 +1,7 @@
 package com.cs48.MusicQ;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -65,19 +66,29 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
 
         progressDialog.setMessage("Registering user...");
         progressDialog.show();
-        firebaseAuth.createUserWithEmailAndPassword(email,password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(Main2Activity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
-                            progressDialog.dismiss();
-                        } else {
-                            Toast.makeText(Main2Activity.this, "Couldn't register", Toast.LENGTH_SHORT).show();
-                        }
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-                    }
-                });
+        progressDialog.dismiss();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+
+//        firebaseAuth.createUserWithEmailAndPassword(email,password)
+//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            Toast.makeText(Main2Activity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+//
+//                        } else {
+//                            Toast.makeText(Main2Activity.this, "Couldn't register", Toast.LENGTH_SHORT).show();
+//                        }
+//
+//                    }
+//                });
 
     }
 

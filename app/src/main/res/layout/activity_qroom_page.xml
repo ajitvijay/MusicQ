@@ -20,7 +20,7 @@
 
         <EditText
             android:id="@+id/songinput"
-            android:layout_width="100dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="Enter Song" />
 
@@ -35,7 +35,9 @@
     <FrameLayout
         android:id="@+id/includeCurrentSong"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp">
         
         <ListView
             android:id="@+id/songlist"

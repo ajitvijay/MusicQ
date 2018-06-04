@@ -46,30 +46,12 @@
             android:ems="10"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/existingPlaylist"
-            android:layout_gravity="center"
-            android:gravity="center_horizontal"
-            android:text="Enter Existing URI Code"
-            />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/et_existing_playlist"
-            android:ems="10"/>
-    </LinearLayout>
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn_pass_obj"
         android:layout_gravity="center_horizontal"
         android:text= "Create new QRoom"/>
+
 
 </LinearLayout>

@@ -2,6 +2,11 @@ package com.cs48.MusicQ;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,9 +29,15 @@ import com.spotify.protocol.client.Subscription;
 import com.spotify.protocol.types.PlayerState;
 import com.spotify.protocol.types.Track;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class QRoomPage extends AppCompatActivity {
@@ -44,6 +55,7 @@ public class QRoomPage extends AppCompatActivity {
 //    private List<Song> songsList;
     private EditText songInput;
     private QRoom currQRoom;
+    private Map<String, Song> songMap = new HashMap<String, Song>();
 
 
     public class SongListAdapter extends BaseAdapter {
@@ -78,14 +90,25 @@ public class QRoomPage extends AppCompatActivity {
             Song currSong = currQRoom.getPlaylist().getSongs().get(i);
             LayoutInflater inflater = QRoomPage.super.getLayoutInflater();
             View row = inflater.inflate(R.layout.song_layout, viewGroup, false);
-            TextView songName, score;
+            TextView songName, score, artistName;
             ImageView upArrow, downArrow;
             songName = (TextView) row.findViewById(R.id.songNameTextView);
             score = (TextView) row.findViewById(R.id.scoreTextView);
             upArrow = (ImageView) row.findViewById(R.id.upArrow);
             downArrow = (ImageView) row.findViewById(R.id.downArrow);
+//            songImage = (ImageView) row.findViewById(R.id.songImage);
+            artistName = (TextView) row.findViewById(R.id.artistName);
+
+//            try {
+//                if(!currSong.getImageUrl().equals(""))
+//                songImage.setImageDrawable(drawableFromUrl(currSong.getImageUrl()));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+
             songName.setText(currSong.getTitle());
             score.setText(currSong.getScore() + "");
+            artistName.setText(currSong.getArtist());
             upArrow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -110,6 +133,51 @@ public class QRoomPage extends AppCompatActivity {
         public List<Song> getSongsList() {
             return currQRoom.getPlaylist().getSongs();
         }
+
+//        private Drawable drawableFromUrl(final String url) throws IOException {
+//            final Bitmap[] x = {null};
+//
+//
+//            class HttpThread extends AsyncTask<String, Void, Bitmap>{
+//
+//                @Override
+//                protected Bitmap doInBackground(String... strings) {
+//                    Bitmap bitmap;
+//                    try {
+//                        HttpURLConnection connection = (HttpURLConnection) new URL(strings[0]).openConnection();
+//                        connection.connect();
+//                        InputStream input = connection.getInputStream();
+//                        bitmap = BitmapFactory.decodeStream(input);
+//                        return bitmap;
+//
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                    return null;
+//                }
+//
+//                @Override
+//                protected void onPostExecute(Bitmap bitmap) {
+//                    super.onPostExecute(bitmap);
+//                    x[0] = bitmap;
+//                }
+//            }
+//
+//            new HttpThread().execute(url);
+//
+//            if(x[0] == null){
+//                return null;
+//            }
+//            else {
+//                return resize(new BitmapDrawable(QRoomPage.super.getResources(), x[0]));
+//            }
+//        }
+//
+//        private Drawable resize(Drawable image) {
+//            Bitmap b = ((BitmapDrawable)image).getBitmap();
+//            Bitmap bitmapResized = Bitmap.createScaledBitmap(b, 50, 50, false);
+//            return new BitmapDrawable(QRoomPage.super.getResources(), bitmapResized);
+//        }
     }
 
 
@@ -136,10 +204,15 @@ public class QRoomPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String newItem = songInput.getText().toString();
-                Song songTest = new Song("NewSong", "Unknown", 100, false, 0, 0, "aa");
-                currQRoom.getPlaylist().getSongs().add(songTest);
-                songListAdapter.notifyDataSetChanged();
-//                if(newItem != null) {
+
+               Song songNew =  songMap.get(newItem);
+//                Song songTest = new Song("NewSong", "Unknown", 100, false, 0, 0, "aa");
+
+                if(songNew != null) {
+                    currQRoom.getPlaylist().getSongs().add(songNew);
+                    songListAdapter.notifyDataSetChanged();
+                }
+    //                if(newItem != null) {
 //                    arrayList.add(new String(newItem));
 //                }
 //                adapter.notifyDataSetChanged();
@@ -167,11 +240,50 @@ public class QRoomPage extends AppCompatActivity {
         Song song2 = new Song("Powerglide", "Rae Sremmurd", 100, false, 0, 0 , "spotify:track:2yUbCEiaolfSMluDo9RMmG");
         Song song3 = new Song("Nice for What", "Drake", 100, false, 0, 0, "spotify:track:1cTZMwcBJT0Ka3UJPXOeeN");
         Song song4 = new Song("XO TOUR Llif3", "Lil Uzi Vert", 100, false, 0, 0, "spotify:track:7GX5flRQZVHRAGd6B4TmDO");
+        Song song5 = new Song("Yikes", "Kanye West", 100, false, 0, 0, "spotify:track:2r4JRwcbIeuAzWjH4YXlLs");
+        Song song6 = new Song("2 Vaults", "Tee Grizzley", 100, false, 0, 0, "spotify:track:0KmgnnbSO6Iqye27Rdtv13");
+        Song song7 = new Song("Look Alive", "Drake", 100, false, 0, 0, "spotify:track:4qKcDkK6siZ7Jp1Jb4m0aL");
+        Song song8 = new Song("Shoota", "Playboi Carti (feat. Lil Uzi Vert)", 100, false, 0, 0, "spotify:track:2BJSMvOGABRxokHKB0OI8i");
+        Song song9 = new Song("DNA.", "Kendrick Lamar", 100, false, 0, 0, "spotify:track:6HZILIRieu8S0iqY8kIKhj");
+        Song song10 = new Song("Get Off", "Zo", 100, false, 0, 0, "spotify:track:28KTX2uEk6n9UiE7J8YDKF");
+        Song song11 = new Song("Gautemala", "Rae Sremmurd", 100, false, 0, 0, "spotify:track:0TCnOEVeLQMXOUrpPlM7uY");
+        Song song12 = new Song("High End", "Chris Brown (feat. Future)", 100, false, 0, 0, "spotify:track:2XdgSB4TtzUHQYCMfSHbFI");
+        Song song13 = new Song("Plug Walk", "Rich The Kid", 100, false, 0, 0, "spotify:track:6mAz8D1TmlTuef90dbNIiZ");
+        Song song14 = new Song("Medicated", "Wiz Khalifa", 100, false, 0, 0, "spotify:track:5OI48E8HqkN8fnTOu3Hfuf");
+        Song song15 = new Song("rockstar", "Post Malone(feat. 21 Savage)", 100, false, 0, 0, "spotify:track:0e7ipj03S05BNilyu5bRzt");
 
         songs.add(song1);
         songs.add(song2);
         songs.add(song3);
         songs.add(song4);
+//        songs.add(song5);
+//        songs.add(song6);
+//        songs.add(song7);
+//        songs.add(song8);
+//        songs.add(song9);
+//        songs.add(song10);
+//        songs.add(song11);
+//        songs.add(song12);
+//        songs.add(song13);
+//        songs.add(song14);
+//        songs.add(song15);
+
+        songMap.put("Big Shot",song1);
+        songMap.put("Powerglide",song2);
+        songMap.put("Nice for What", song3);
+        songMap.put("XO TOUR Llif3", song4);
+        songMap.put("Yikes", song5);
+        songMap.put("Two Vaults", song6);
+        songMap.put("Look Alive", song7);
+        songMap.put("Shoota", song8);
+        songMap.put("DNA", song9);
+        songMap.put("Get Off", song10);
+        songMap.put("Gautemala", song11);
+        songMap.put("High End", song12);
+        songMap.put("Plug Walk", song13);
+        songMap.put("Medicated", song14);
+        songMap.put("rockstar", song15);
+
 
         return songs;
     }
@@ -255,6 +367,7 @@ public class QRoomPage extends AppCompatActivity {
                     currQRoom.setCurrentSong(new Song());
                     pausePlay.setImageResource(android.R.drawable.ic_media_play);
                 }
+                mSpotifyAppRemote.getPlayerApi().play(currQRoom.getCurrentSong().getSpotifyURI());
                 songListAdapter.notifyDataSetChanged();
                 updateCurrentSongView();
             }
@@ -282,6 +395,7 @@ public class QRoomPage extends AppCompatActivity {
             currentSongTextView.setText(currQRoom.getCurrentSong().getTitle());
         }
     }
+
 
 
 }

@@ -14,6 +14,7 @@ public class Song implements Serializable, Comparable<Song> {
     private int upvotes;
     private int downvotes;
     private String spotifyURI;
+    private String imageUrl;
     private static final long serialVersionUID = 3L;
 
     //Make call for image when needing it in the actual Activity
@@ -36,8 +37,20 @@ public class Song implements Serializable, Comparable<Song> {
         this.upvotes = upvotes;
         this.downvotes = downvotes;
         this.spotifyURI = spotifyURI;
+        this.imageUrl = "";
     }
-    
+
+    public Song(String title, String artist, int length, boolean playing, int upvotes, int downvotes, String spotifyURI, String imageUrl) {
+        this.title = title;
+        this.artist = artist;
+        this.length = length;
+        this.playing = playing;
+        this.upvotes = upvotes;
+        this.downvotes = downvotes;
+        this.spotifyURI = spotifyURI;
+        this.imageUrl = imageUrl;
+    }
+
     @Override
     public int compareTo(Song temp) {
         int voteScore = ((Song) temp).getScore();
@@ -100,5 +113,13 @@ public class Song implements Serializable, Comparable<Song> {
 
     public void setSpotifyURI(String spotifyURI) {
         this.spotifyURI = spotifyURI;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
