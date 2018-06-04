@@ -21,13 +21,19 @@
             android:id="@+id/songinput"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Enter Song" />
+            android:hint="Enter Song" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn_add_song"
             android:text="Add Song"
-            android:layout_toRightOf="@+id/songinput"/>
+            android:layout_below="@+id/searchsong" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchsong"
+            android:text="Search Song"
+            android:layout_toRightOf="@id/songinput"/>
     </RelativeLayout>
     <ListView
         android:layout_width="match_parent"
