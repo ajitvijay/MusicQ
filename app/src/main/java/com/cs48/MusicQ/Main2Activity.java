@@ -90,6 +90,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
             //registerUser();
         }
         if (view == textViewSignin) {
+            startActivity(new Intent(Main2Activity.this, SignIn.class));
             //login activity
         }
     }
