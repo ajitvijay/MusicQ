@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by ajitvijayakumar on 5/17/18.
  */
 
-public class Song implements Serializable {
+public class Song implements Serializable, Comparable<Song> {
     private String title;
     private String artist;
     private int length;
@@ -29,6 +29,14 @@ public class Song implements Serializable {
         this.position = position;
         this.spotifyURI = spotifyURI;
     }
+    
+    @Override
+    public int compareTo(Song temp) {
+        int voteScore = ((Song) temp).getScore();
+        return voteScore - this.getScore();
+    }
+    
+    public int getScore() { return upvotes - downvotes; }
 
     public String getTitle() {
         return title;
