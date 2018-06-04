@@ -111,10 +111,24 @@ public class QRoomPage extends AppCompatActivity {
             return currQRoom.getPlaylist().getSongs();
         }
     }
+    
+    static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    static SecureRandom rnd = new SecureRandom();
+
+    public String randomString( int len ){
+        StringBuilder sb = new StringBuilder( len );
+        for( int i = 0; i < len; i++ )
+            sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
+        return sb.toString();
+    }
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        TextView textView = (TextView) findViewById(R.id.textView);
+        textView.setText(randomString(5));
+        
         currQRoom = (QRoom) getIntent().getSerializableExtra("qroom");
         //TODO: Check if current user is Leader, and change layout based on that
         //ONLY IF LEADER
