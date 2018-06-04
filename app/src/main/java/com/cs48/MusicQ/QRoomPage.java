@@ -53,7 +53,7 @@ public class QRoomPage extends AppCompatActivity {
             setContentView(R.layout.combined_qroom_layout);
             pausePlay = (ImageView) findViewById(R.id.pausePlayImage);
             skip = (ImageView) findViewById(R.id.skipImage);
-            currentSong.setText();
+            currentSong.setText(currQRoom.getCurrentSong().getTitle());
 
 //        setContentView(R.layout.activity_qroom_page);
 
