@@ -22,6 +22,8 @@
         <activity android:name=".CreateRoomPage" />
         <activity android:name=".JoinRoomPage" />
         <activity android:name=".QRoomPage" />
+
+        <activity android:name=".SignIn" />
     </application>
 
 </manifest>

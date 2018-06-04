@@ -193,14 +193,19 @@ public class QRoomPage extends AppCompatActivity {
         //ONLY IF LEADER
         if(currQRoom.getQLeader() == CurrentUser.id) {
             setContentView(R.layout.combined_qroom_layout);
+            currQRoom.getPlaylist().setSongs(getDummyData());
+            initCurrentSongView();
         }
         else {
             setContentView(R.layout.activity_qroom_page);
         }
 
         initSpotifyConnection();
-        initCurrentSongView();
+
         initListView();
+
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setTitle(currQRoom.getName() + " - " + currQRoom.getCode());
 
         songInput = (EditText) findViewById(R.id.songinput);
         Button btnAddSong = (Button) findViewById(R.id.btn_add_song);
@@ -381,7 +386,7 @@ public class QRoomPage extends AppCompatActivity {
 
     private void initListView(){
         ListView listView = (ListView) findViewById(R.id.songlist);
-        currQRoom.getPlaylist().setSongs(getDummyData());
+
         songListAdapter = new SongListAdapter();
         listView.setAdapter(songListAdapter);
         runOnUiThread(new Runnable() {
@@ -401,7 +406,11 @@ public class QRoomPage extends AppCompatActivity {
         }
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+//        QRoomStatic.qRoom = currQRoom;
+        QRoomStatic.populateFields(currQRoom);
+    }
 }
 

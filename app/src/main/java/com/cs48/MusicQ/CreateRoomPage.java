@@ -57,6 +57,8 @@ public class CreateRoomPage extends AppCompatActivity  {
                 QRoom qroom = new QRoom(members, Name.getText().toString(), randomString(5), false, new Song(), new QList(), CurrentUser.id);
 //                qroom.setName(Name.getText().toString());
 //                qroom.setCode(Integer.parseInt(Code.getText().toString()));
+//                QRoomStatic.qRoom =
+                QRoomStatic.populateFields(qroom);
                 intent.putExtra("qroom", qroom);
                 startActivity(intent);
             }
