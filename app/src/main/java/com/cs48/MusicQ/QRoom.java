@@ -11,7 +11,7 @@ import java.util.List;
 public class QRoom implements Serializable {
     private List<Integer> members;
     private String name;
-    private int code;
+    private String code;
     private String existingPlaylistURI;
     private boolean playing;
     private Song currentSong;
@@ -19,7 +19,7 @@ public class QRoom implements Serializable {
     private int QLeader;
     private static final long serialVersionUID = 1L;
 
-    public QRoom(List<Integer> members, String name, int code, boolean playing, Song currentSong, QList playlist, int QLeader) {
+    public QRoom(List<Integer> members, String name, String code, boolean playing, Song currentSong, QList playlist, int QLeader) {
         this.members = members;
         this.name = name;
         this.code = code;
@@ -56,11 +56,11 @@ public class QRoom implements Serializable {
         this.existingPlaylistURI = playListName;
     }
 
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
