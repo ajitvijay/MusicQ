@@ -1,6 +1,7 @@
 package com.cs48.MusicQ;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
 
 public class QList implements Serializable{
     private String name;
-    private ArrayList<Song> songs;
+    private List<Song> songs;
     private static final long serialVersionUID = 2L;
 
     public QList(String name, List<Song> songs) {

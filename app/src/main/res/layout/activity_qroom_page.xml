@@ -22,7 +22,7 @@
             android:id="@+id/songinput"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Enter Song" />
+            android:hint="Enter Song" />
 
         <Button
             android:id="@+id/btn_add_song"
@@ -32,10 +32,18 @@
             android:text="Add Song" />
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/songlist"
-        android:layout_width="match_parent"
+    <FrameLayout
+        android:id="@+id/includeCurrentSong"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+        
+        <ListView
+            android:id="@+id/songlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+    </FrameLayout>
 
-    </ListView>
+
+
 </LinearLayout>

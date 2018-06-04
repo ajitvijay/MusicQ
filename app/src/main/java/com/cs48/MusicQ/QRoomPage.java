@@ -43,7 +43,7 @@ public class QRoomPage extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_qroom_page);
+        setContentView(R.layout.combined_qroom_layout);
 
         ListView listView = (ListView) findViewById(R.id.songlist);
 //        String[] items = {"coordinate-Travis Scott", "Connect The Dots-Meek Mill", "Ran It Up-Rich " +

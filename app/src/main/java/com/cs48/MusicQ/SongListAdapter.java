@@ -51,11 +51,12 @@ public class SongListAdapter extends BaseAdapter {
         upArrow = (ImageView) row.findViewById(R.id.upArrow);
         downArrow = (ImageView) row.findViewById(R.id.downArrow);
         songName.setText(currSong.getTitle());
-        score.setText((currSong.getUpvotes() - currSong.getDownvotes()) + "");
+        score.setText(currSong.getScore() + "");
         upArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 songsList.get(i).setUpvotes(songsList.get(i).getUpvotes() + 1);
+                Collections.sort(songsList);
                 SongListAdapter.super.notifyDataSetChanged();
             }
         });
@@ -64,6 +65,7 @@ public class SongListAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 songsList.get(i).setDownvotes(songsList.get(i).getDownvotes() + 1);
+                Collections.sort(songsList);
                 SongListAdapter.super.notifyDataSetChanged();
             }
         });
