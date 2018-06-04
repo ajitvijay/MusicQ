@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "353958850060",
+    "firebase_url": "https://musicq-be68b.firebaseio.com",
+    "project_id": "musicq-be68b",
+    "storage_bucket": "musicq-be68b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:353958850060:android:369f73a533458ef6",
+        "android_client_info": {
+          "package_name": "com.cs48.spotifyapitest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "353958850060-q4k6uj76htnfb811vn5u9jp5m7e5qev7.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "353958850060-q4k6uj76htnfb811vn5u9jp5m7e5qev7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl2fBpdtLCsS8iSGKoUHHXfGnwuZCCG1s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
