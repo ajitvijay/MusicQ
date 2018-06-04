@@ -27,6 +27,7 @@ import com.spotify.protocol.types.Track;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 
 public class QRoomPage extends AppCompatActivity {
@@ -35,9 +36,9 @@ public class QRoomPage extends AppCompatActivity {
     private static final String CLIENT_ID = "194766eebd3c4e0d8422817e3673efef";
     private static final String REDIRECT_URI = "https://spotify.com";
     private SpotifyAppRemote mSpotifyAppRemote;
+    private SongListAdapter songListAdapter;
 
-    private ArrayList<String> arrayList;
-    private ArrayAdapter<String> adapter;
+    private List<Song> songsList;
     private EditText SongInput;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,22 +46,34 @@ public class QRoomPage extends AppCompatActivity {
         setContentView(R.layout.activity_qroom_page);
 
         ListView listView = (ListView) findViewById(R.id.songlist);
-        String[] items = {"coordinate-Travis Scott", "Connect The Dots-Meek Mill", "Ran It Up-Rich " +
-                "the Kid"};
-        arrayList = new ArrayList<>(Arrays.asList(items));
+//        String[] items = {"coordinate-Travis Scott", "Connect The Dots-Meek Mill", "Ran It Up-Rich " +
+//                "the Kid"};
+//        arrayList = new ArrayList<>(Arrays.asList(items));
 
-        adapter = new ArrayAdapter<String>(this, R.layout.song_layout, R.id.txtitem,arrayList);
-        listView.setAdapter(adapter);
+        songsList = getDummyData();
+
+//        adapter = new ArrayAdapter<String>(this, R.layout.song_layout, R.id.txtitem,arrayList);
+        songListAdapter = new SongListAdapter(this, songsList);
+        listView.setAdapter(songListAdapter);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                songListAdapter.notifyDataSetChanged();
+            }
+        });
+//        listView.notify();
+
         SongInput = (EditText) findViewById(R.id.songinput);
         Button btnAddSong = (Button) findViewById(R.id.btn_add_song);
+
         btnAddSong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String newItem = SongInput.getText().toString();
-                if(newItem != null) {
-                    arrayList.add(new String(newItem));
-                }
-                adapter.notifyDataSetChanged();
+//                if(newItem != null) {
+//                    arrayList.add(new String(newItem));
+//                }
+//                adapter.notifyDataSetChanged();
 
 
             }
@@ -113,6 +126,21 @@ public class QRoomPage extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         SpotifyAppRemote.CONNECTOR.disconnect(mSpotifyAppRemote);
+    }
+
+    private List<Song> getDummyData(){
+        List<Song> songs = new ArrayList<Song>();
+        Song song1 = new Song("Big Shot", "Kendrick Lamar", 100, false, 0, 0, "spotify:track:5cXg9IQS34FzLVdHhp7hu7");
+        Song song2 = new Song("Powerglide", "Rae Sremmurd", 100, false, 0, 0 , "spotify:track:2yUbCEiaolfSMluDo9RMmG");
+        Song song3 = new Song("Nice for What", "Drake", 100, false, 0, 0, "spotify:track:1cTZMwcBJT0Ka3UJPXOeeN");
+        Song song4 = new Song("XO TOUR Llif3", "Lil Uzi Vert", 100, false, 0, 0, "spotify:track:7GX5flRQZVHRAGd6B4TmDO");
+
+        songs.add(song1);
+        songs.add(song2);
+        songs.add(song3);
+        songs.add(song4);
+
+        return songs;
     }
 
 

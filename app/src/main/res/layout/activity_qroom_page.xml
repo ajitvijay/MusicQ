@@ -1,39 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context="com.cs48.MusicQ.QRoomPage">
 
     <TextView
+        android:id="@+id/room"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:gravity="center_horizontal"
-        android:id="@+id/room"
-        />
+        android:gravity="center_horizontal" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <EditText
             android:id="@+id/songinput"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Enter Song" />
+
         <Button
+            android:id="@+id/btn_add_song"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_add_song"
-            android:text="Add Song"
-            android:layout_toRightOf="@+id/songinput"/>
+            android:layout_toRightOf="@+id/songinput"
+            android:text="Add Song" />
     </RelativeLayout>
+
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/songlist"
-        >
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     </ListView>
 </LinearLayout>

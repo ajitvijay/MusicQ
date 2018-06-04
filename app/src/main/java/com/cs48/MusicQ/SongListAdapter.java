@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Collections;
 import java.util.List;
 
 public class SongListAdapter extends BaseAdapter {
@@ -39,7 +40,7 @@ public class SongListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         Song currSong = songsList.get(i);
         LayoutInflater inflater = context.getLayoutInflater();
         View row = inflater.inflate(R.layout.song_layout, viewGroup, false);
@@ -50,8 +51,27 @@ public class SongListAdapter extends BaseAdapter {
         upArrow = (ImageView) row.findViewById(R.id.upArrow);
         downArrow = (ImageView) row.findViewById(R.id.downArrow);
         songName.setText(currSong.getTitle());
-        score.setText(currSong.getUpvotes() - currSong.getDownvotes());
+        score.setText((currSong.getUpvotes() - currSong.getDownvotes()) + "");
+        upArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                songsList.get(i).setUpvotes(songsList.get(i).getUpvotes() + 1);
+                SongListAdapter.super.notifyDataSetChanged();
+            }
+        });
+
+        downArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                songsList.get(i).setDownvotes(songsList.get(i).getDownvotes() + 1);
+                SongListAdapter.super.notifyDataSetChanged();
+            }
+        });
 
         return row;
+    }
+
+    public List<Song> getSongsList() {
+        return songsList;
     }
 }

@@ -13,20 +13,18 @@ public class Song implements Serializable {
     private boolean playing;
     private int upvotes;
     private int downvotes;
-    private int position;
     private String spotifyURI;
     private static final long serialVersionUID = 3L;
 
     //Make call for image when needing it in the actual Activity
 
-    public Song(String title, String artist, int length, boolean playing, int upvotes, int downvotes, int position, String spotifyURI) {
+    public Song(String title, String artist, int length, boolean playing, int upvotes, int downvotes, String spotifyURI) {
         this.title = title;
         this.artist = artist;
         this.length = length;
         this.playing = playing;
         this.upvotes = upvotes;
         this.downvotes = downvotes;
-        this.position = position;
         this.spotifyURI = spotifyURI;
     }
 
@@ -76,14 +74,6 @@ public class Song implements Serializable {
 
     public void setDownvotes(int downvotes) {
         this.downvotes = downvotes;
-    }
-
-    public int getPosition() {
-        return position;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
     }
 
     public String getSpotifyURI() {
