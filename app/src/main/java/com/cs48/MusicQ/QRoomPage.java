@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextClock;
 import android.widget.TextView;
@@ -37,15 +38,23 @@ public class QRoomPage extends AppCompatActivity {
     private static final String REDIRECT_URI = "https://spotify.com";
     private SpotifyAppRemote mSpotifyAppRemote;
     private SongListAdapter songListAdapter;
+    private ImageView pausePlay, skip;
+    private TextView currentSong;
 
     private List<Song> songsList;
     private EditText SongInput;
+    private QRoom currQRoom;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //TODO: Check if current user is Leader, and change layout based on that
-        setContentView(R.layout.combined_qroom_layout);
+        //ONLY IF LEADER
+            setContentView(R.layout.combined_qroom_layout);
+            pausePlay = (ImageView) findViewById(R.id.pausePlayImage);
+            skip = (ImageView) findViewById(R.id.skipImage);
+            currentSong.setText();
+
 //        setContentView(R.layout.activity_qroom_page);
 
         ListView listView = (ListView) findViewById(R.id.songlist);
