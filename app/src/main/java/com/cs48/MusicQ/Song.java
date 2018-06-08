@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by ajitvijayakumar on 5/17/18.
  */
 
-public class Song implements Serializable, Comparable<Song> {
+public class Song implements Serializable, Comparable<Song>, QMemberCompositeInterface {
     private String title;
     private String artist;
     private int length;
@@ -15,6 +15,7 @@ public class Song implements Serializable, Comparable<Song> {
     private int downvotes;
     private String spotifyURI;
     private String imageUrl;
+    private int addedUser;
     private static final long serialVersionUID = 3L;
 
     //Make call for image when needing it in the actual Activity
@@ -121,5 +122,10 @@ public class Song implements Serializable, Comparable<Song> {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    @Override
+    public void addNewMember(int id) {
+        addedUser = id;
     }
 }

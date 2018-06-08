@@ -22,7 +22,7 @@ public class JoinRoomPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(JoinRoomPage.this, QRoomPage.class);
-                QRoom qRoom = QRoomStatic.generateQRoomObject();
+                QRoom qRoom = QRoomStatic.getInstance();
                 intent.putExtra("qroom", qRoom) ;
                 qRoom.setQLeader(100);
                 startActivity(intent);

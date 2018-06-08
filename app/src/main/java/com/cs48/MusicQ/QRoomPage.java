@@ -1,12 +1,5 @@
 package com.cs48.MusicQ;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,10 +22,6 @@ import com.spotify.protocol.client.Subscription;
 import com.spotify.protocol.types.PlayerState;
 import com.spotify.protocol.types.Track;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -193,7 +182,7 @@ public class QRoomPage extends AppCompatActivity {
         //ONLY IF LEADER
         if(currQRoom.getQLeader() == CurrentUser.id) {
             setContentView(R.layout.combined_qroom_layout);
-            currQRoom.getPlaylist().setSongs(getDummyData());
+            currQRoom.getPlaylist().setSongs(generateTestData());
             initCurrentSongView();
         }
         else {
@@ -244,7 +233,7 @@ public class QRoomPage extends AppCompatActivity {
         SpotifyAppRemote.CONNECTOR.disconnect(mSpotifyAppRemote);
     }
 
-    private List<Song> getDummyData(){
+    private List<Song> generateTestData(){
         List<Song> songs = new ArrayList<Song>();
         Song song1 = new Song("Big Shot", "Kendrick Lamar", 100, false, 0, 0, "spotify:track:5cXg9IQS34FzLVdHhp7hu7");
         Song song2 = new Song("Powerglide", "Rae Sremmurd", 100, false, 0, 0 , "spotify:track:2yUbCEiaolfSMluDo9RMmG");

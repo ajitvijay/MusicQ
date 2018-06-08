@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QRoom implements Serializable {
+public class QRoom implements Serializable, QMemberCompositeInterface {
     private List<Integer> members;
     private String name;
     private String code;
@@ -99,5 +99,10 @@ public class QRoom implements Serializable {
     @Override
     public String toString() {
         return "Name: "+ name + " Code: " + code + "URI: " + existingPlaylistURI;
+    }
+
+    @Override
+    public void addNewMember(int id) {
+        members.add(id);
     }
 }

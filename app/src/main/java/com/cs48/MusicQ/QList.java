@@ -8,9 +8,10 @@ import java.util.List;
  * Created by ajitvijayakumar on 5/17/18.
  */
 
-public class QList implements Serializable{
+public class QList implements Serializable, QMemberCompositeInterface{
     private String name;
     private List<Song> songs;
+    private List<Integer> members;
     private static final long serialVersionUID = 2L;
 
     public QList(){
@@ -37,5 +38,19 @@ public class QList implements Serializable{
 
     public void setSongs(List<Song> songs) {
         this.songs = songs;
+    }
+
+    public List<Integer> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<Integer> members) {
+        this.members = members;
+    }
+
+
+    @Override
+    public void addNewMember(int id) {
+        members.add(id);
     }
 }
