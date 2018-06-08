@@ -76,19 +76,19 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
-//        firebaseAuth.createUserWithEmailAndPassword(email,password)
-//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            Toast.makeText(Main2Activity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
-//
-//                        } else {
-//                            Toast.makeText(Main2Activity.this, "Couldn't register", Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                    }
-//                });
+        firebaseAuth.createUserWithEmailAndPassword(email,password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(Main2Activity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+                        } else {
+                            Toast.makeText(Main2Activity.this, "Couldn't register", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
 
     }
 
@@ -97,8 +97,9 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
 
         if (view == buttonRegister) {
             Toast.makeText(Main2Activity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+            registerUser;
             startActivity(new Intent(Main2Activity.this, MainActivity.class));
-            //registerUser();
+            
         }
         if (view == textViewSignin) {
             startActivity(new Intent(Main2Activity.this, SignIn.class));
