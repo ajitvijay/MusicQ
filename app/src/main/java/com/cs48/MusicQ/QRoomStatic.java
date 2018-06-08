@@ -18,6 +18,8 @@ public final class QRoomStatic {
     private static QList playlist;
     private static int QLeader;
 
+    protected QRoomStatic() {
+    }
 
     public static QRoom getInstance(){
         QRoom qRoom = new QRoom(members, name, code, playing, currentSong, playlist, QLeader);

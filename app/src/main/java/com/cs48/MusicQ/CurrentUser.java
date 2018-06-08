@@ -14,6 +14,10 @@ public final class CurrentUser{
     private static boolean inRoom = false;
     private static boolean spotifyMember = false;
 
+    protected CurrentUser(){
+        
+    }
+
     public static User getInstance() {
         User user = new User(id, firstName, lastName, username, password, playlists, currentRoom, inRoom, spotifyMember);
         return user;

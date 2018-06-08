@@ -53,8 +53,8 @@ public class CreateRoomPage extends AppCompatActivity  {
             {
                 Intent intent = new Intent(CreateRoomPage.this, QRoomPage.class);
                 List<Integer> members = new ArrayList<>();
-                members.add(CurrentUser.id);
-                QRoom qroom = new QRoom(members, Name.getText().toString(), randomString(5), false, new Song(), new QList(), CurrentUser.id);
+                members.add(CurrentUser.getId());
+                QRoom qroom = new QRoom(members, Name.getText().toString(), randomString(5), false, new Song(), new QList(), CurrentUser.getId());
 //                qroom.setName(Name.getText().toString());
 //                qroom.setCode(Integer.parseInt(Code.getText().toString()));
 //                QRoomStatic.qRoom =

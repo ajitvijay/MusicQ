@@ -2,6 +2,7 @@ package com.cs48.MusicQ;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.test.suitebuilder.annotation.LargeTest;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -180,7 +181,7 @@ public class QRoomPage extends AppCompatActivity {
         currQRoom = (QRoom) getIntent().getSerializableExtra("qroom");
         //TODO: Check if current user is Leader, and change layout based on that
         //ONLY IF LEADER
-        if(currQRoom.getQLeader() == CurrentUser.id) {
+        if(currQRoom.getQLeader() == CurrentUser.getId()) {
             setContentView(R.layout.combined_qroom_layout);
             currQRoom.getPlaylist().setSongs(generateTestData());
             initCurrentSongView();
@@ -234,6 +235,7 @@ public class QRoomPage extends AppCompatActivity {
         SpotifyAppRemote.CONNECTOR.disconnect(mSpotifyAppRemote);
     }
 
+    @LargeTest
     private List<Song> generateTestData(){
         List<Song> songs = new ArrayList<Song>();
         Song song1 = new Song("Big Shot", "Kendrick Lamar", 100, false, 0, 0, "spotify:track:5cXg9IQS34FzLVdHhp7hu7");
