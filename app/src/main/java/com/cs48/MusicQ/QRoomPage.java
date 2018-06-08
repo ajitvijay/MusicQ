@@ -208,6 +208,7 @@ public class QRoomPage extends AppCompatActivity {
 //                Song songTest = new Song("NewSong", "Unknown", 100, false, 0, 0, "aa");
 
                 if(songNew != null) {
+                    songNew.addNewMember(CurrentUser.getId());
                     currQRoom.getPlaylist().getSongs().add(songNew);
                     songListAdapter.notifyDataSetChanged();
                 }

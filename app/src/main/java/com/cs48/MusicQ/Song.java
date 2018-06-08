@@ -124,6 +124,8 @@ public class Song implements Serializable, Comparable<Song>, QMemberCompositeInt
         this.imageUrl = imageUrl;
     }
 
+
+
     @Override
     public void addNewMember(int id) {
         addedUser = id;

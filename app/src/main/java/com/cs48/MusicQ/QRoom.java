@@ -103,6 +103,8 @@ public class QRoom implements Serializable, QMemberCompositeInterface {
 
     @Override
     public void addNewMember(int id) {
-        members.add(id);
+        if(!members.contains(id)){
+            members.add(id);
+        }
     }
 }
