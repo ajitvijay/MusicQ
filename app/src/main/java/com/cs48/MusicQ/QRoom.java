@@ -17,6 +17,7 @@ public class QRoom implements Serializable, QMemberCompositeInterface {
     private Song currentSong;
     private QList playlist;
     private int QLeader;
+    private firebase rootRef;
     private static final long serialVersionUID = 1L;
 
     public QRoom(List<Integer> members, String name, String code, boolean playing, Song currentSong, QList playlist, int QLeader) {
@@ -29,6 +30,16 @@ public class QRoom implements Serializable, QMemberCompositeInterface {
         this.QLeader = QLeader;
     }
     public QRoom() {
+        rootRef = new Firebase("https:://fire-app52930.firebaseio.com/Users");
+        Firebase childRef = RootRef.child(key);
+        childRef.setMembers(members);
+        childRef.setName(name);
+        childRef.setCode(code);
+        childRef.setPlaylist(playlist);
+        childRef.setQLeader(QLeader);
+    }
+
+    public void setFireBase(){
 
     }
 
